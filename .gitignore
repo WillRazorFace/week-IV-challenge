@@ -1,0 +1,8 @@
+# Removendo os módulos
+/node_modules
+
+# Removendo os arquivos de configuração
+*.json
+
+# Removendo os arquivos de configuração do webpack
+*.config.*
