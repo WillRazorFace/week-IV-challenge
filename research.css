@@ -24,20 +24,17 @@ main {
 }
 
 .poll-img img {
-    width: 85%;
+    width: 80%;
     margin: 1.5rem 0 0 3rem;
 }
 
 .poll-info {
     display: grid;
+    grid-area: info;
     justify-content: center;
     text-align: center;
     place-items: center;
     padding: 0;
-}
-
-.poll-info {
-    grid-area: info;
 }
 
 .poll-info h1 {
@@ -62,4 +59,41 @@ main {
     text-decoration: none;
     color: white;
     font-size: 1.5rem;
+}
+
+/* Responsividade */
+
+@media only screen and (max-width: 900px) {
+    main {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+        grid-template-areas:
+            "img"
+            "info"
+        ;
+        align-content: flex-start;
+    }
+
+    .poll-img {
+        align-items: center;
+        justify-content: center;
+        align-content: center;
+        margin: 1.5rem 0 0 0;
+    }
+    
+    .poll-img img {
+        width: 70%;
+    }
+
+    .poll-info {
+        display: grid;
+        grid-area: info;
+        text-align: center;
+        place-items: center;
+        padding: 0;
+    }
+
+    .poll-info h1 {
+        font-size: 5rem;
+    }
 }
