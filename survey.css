@@ -1,0 +1,126 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+main {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas:
+        "img info"
+    ;
+    justify-content: center;
+    text-align: center;
+    place-items: center;
+}
+
+.poll-img {
+    margin-top: 5rem;
+    display: grid;
+    grid-area: img;
+    justify-content: right;
+    width: 100%;
+}
+
+.poll-img img {
+    width: 85%;
+    margin: 1.5rem 0 0 0;
+}
+
+.poll-info {
+    margin-top: 5rem;
+    grid-area: info;
+    display: grid;
+    padding: 2rem;
+    text-align: center;
+    text-justify: inter-word;
+}
+
+.poll-info h1 {
+    font-size: 3rem;
+    margin: 0;
+}
+
+.poll-info p {
+    font-size: 1.5rem;
+}
+
+.poll-info div {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+        "button1" "button2"
+    ;
+    place-items: center;
+}
+
+.survey-button {
+    border-radius: 1.25rem;
+    border: none;
+    background-color: #3EB25E;
+    width: 70%;
+    padding: 0.25rem;
+}
+
+.survey-button a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.25rem;
+}
+
+/* Responsividade */
+
+@media only screen and (max-width: 900px) {
+    main {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+        grid-template-areas:
+            "img"
+            "info"
+        ;
+        align-content: flex-start;
+    }
+
+    .poll-img {
+        align-items: center;
+        justify-content: center;
+        align-content: center;
+        margin: 1.5rem 0 0 0;
+    }
+    
+    .poll-img img {
+        width: 100%;
+    }
+
+    .poll-info {
+        display: grid;
+        grid-area: info;
+        text-align: center;
+        place-items: center;
+        padding: 0;
+    }
+
+    .poll-info h1 {
+        font-size: 2rem;
+    }
+    
+    .poll-info p {
+        font-size: 1rem;
+    }
+
+    .poll-info div {
+        width: 100%;
+    }
+
+    .survey-button {
+        width: 80%;
+    }
+    
+    .survey-button a {
+        text-decoration: none;
+        color: white;
+        font-size: 1.25rem;
+    }
+}
