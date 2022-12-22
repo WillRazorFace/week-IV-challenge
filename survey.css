@@ -81,6 +81,7 @@ main {
             "info"
         ;
         align-content: flex-start;
+        padding: 5rem;
     }
 
     .poll-img {
