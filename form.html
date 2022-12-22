@@ -7,7 +7,7 @@
         
         <title>Research</title>
 
-        <link rel="stylesheet" href="survey.css">
+        <link rel="stylesheet" href="form.css">
 
         <!--<link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,18 +15,45 @@
     </head>
         <main>
             <section class="poll-img">
-                <img src="img/one.png">
+                <img src="img/two.png">
             </section>
 
             <section class="poll-info">
-                <h1>Necessities of working in financial markets</h1>
+                <form>
+                    <section class="form-section" id="form-section-1">
+                        <p>What is the status of your account?</p>
 
-                <p>This research is to find the reasons for the failure of people in financial markets.The results of this survey will be emailed to you along with the analysis of our experienced experts.</p>
+                        <select>
+                            <option value="valor1">I have not created an account yet.</option>
+                            <option value="valor2">Valor 2</option>
+                            <option value="valor3">Valor 3</option>
+                        </select>
+
+                        <p>In which financial markets do you operate?</p>
+
+                        <input type="radio" name="market" value="Stock Market">
+                        <label for="Stock Market">Stock Market</label><br/>
+
+                        <input type="radio" name="market" value="Foreign Exchange">
+                        <label for="Foreign Exchange">Foreign Exchange</label><br/>
+
+                        <input type="radio" name="market" value="Commodity">
+                        <label for="Commodity">Commodity</label><br/>
+
+                        <input type="radio" name="market" value="Bond Market">
+                        <label for="Bond Market">Bond Market</label><br/>
+
+                        <input type="radio" name="market" value="Cryptocurrency Market">
+                        <label for="Cryptocurrency Market">Cryptocurrency Market</label><br/>
+                    </section>
+                </form>
 
                 <div>
-                    <button class="survey-button"><a href="index.html">Back to Home</a></button>
-                    <button class="survey-button"><a href="survey-2.html">Fill out the form</a></button>
+                    <button class="survey-button">Back</button>
+                    <button class="survey-button">Next</button>
                 </div>
+
+                <button class="survey-button" id="skip-button">Skip</button>
             </section>
         </main>
     <body>
