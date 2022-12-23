@@ -4,7 +4,16 @@ class surveyForm {
         private backButton: HTMLButtonElement,
         private nextButton: HTMLButtonElement,
         private skipButton: HTMLButtonElement,
-        private currentSection = 1
+        private surveyImageElement: HTMLImageElement = document.getElementById(
+            'poll-img'
+        )! as HTMLImageElement,
+        private images: [string, string, string, string] = [
+            'img/two.png',
+            'img/three.png',
+            'img/four.png',
+            'img/five.png'
+        ],
+        private currentSection: number = 1
     ) {
         this.backButton.addEventListener('click', this.backButtonListener.bind(this));
         this.skipButton.addEventListener('click', this.skipButtonListener.bind(this));
@@ -13,6 +22,10 @@ class surveyForm {
     private renderSection(render: 'next' | 'previous') {
         const section = render === 'next' ? this.currentSection + 1 : this.currentSection - 1;
 
+        // Altera a imagem renderizada
+        this.surveyImageElement.src = this.images[section - 1];
+
+        // Altera a seção do formulário
         const currentSection = this.formElement.querySelector(`#form-section-${this.currentSection}`)! as HTMLElement;
         const nextSection = this.formElement.querySelector(`#form-section-${section}`)! as HTMLElement;
 
