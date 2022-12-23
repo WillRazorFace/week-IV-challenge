@@ -91,11 +91,11 @@ main {
 }
 
 .form-section label {
-    font-size: 1.25rem;
+    font-size: 1.4rem;
 }
 
 input[type=radio] {
-    accent-color: rgba(62, 178, 94, 0.3);
+    accent-color: #3EB25E;
     box-shadow: none !important;
     border-style: none;
 }
@@ -107,6 +107,17 @@ select {
     background-color: transparent;
     border: 1px solid rgba(0, 0, 0, 0.25);
     padding: 0.25rem;
+}
+
+input[type=checkbox] {
+    accent-color: #3EB25E !important;
+    box-shadow: none !important;
+    border-style: none;
+    border-radius: 0.2rem;
+}
+
+input[type=checkbox]:hover {
+    accent-color: #3EB25E !important;
 }
 
 /* Responsividade */
@@ -148,6 +159,10 @@ select {
 
     .poll-info div {
         width: 100%;
+    }
+
+    .form-section label {
+        font-size: 1.25rem;
     }
 
     .survey-button {

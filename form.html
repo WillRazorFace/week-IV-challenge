@@ -21,8 +21,9 @@
             </section>
 
             <section class="poll-info">
-                <form>
-                    <section class="form-section" id="form-section-1">
+                <form id="survey-form">
+                    <!-- Primeira parte do formulário -->
+                    <section class="form-section" id="form-section-1" hidden>
                         <p>What is the status of your account?</p>
 
                         <select>
@@ -48,17 +49,42 @@
                         <input type="radio" name="market" value="Cryptocurrency Market">
                         <label for="Cryptocurrency Market">Cryptocurrency Market</label><br/>
                     </section>
+
+                    <!-- Segunda parte do formulário -->
+                    <section class="form-section" id="form-section-2">
+                        <p>How do you decide to invest?</p>
+
+                        <select>
+                            <option value="valor1">I have not invested yet.</option>
+                            <option value="valor2">I invest often</option>
+                            <option value="valor3">I already invested and went bankrupt</option>
+                        </select>
+
+                        <p>What resources have you used or are you using for your training?</p>
+
+                        <input type="checkbox" name="books and articles" value="Books and articles">
+                        <label for="Books and articles">Books and Articles</label><br/>
+
+                        <input type="checkbox" name="youtube tutorial videos" value="YouTube Tutorial Videos">
+                        <label for="YouTube Tutorial Videos">YouTube Tutorial Videos</label><br/>
+
+                        <input type="checkbox" name="online or face to face courses" value="Online or Face to Face Courses">
+                        <label for="Online or Face to Face Courses">Online or Face to Face Courses</label><br/>
+
+                        <input type="checkbox" name="experience with little investment" value="Experience With Little Investment">
+                        <label for="Experience With Little Investment">Experience With Little Investment</label><br/>
+                    </section>
                 </form>
 
                 <div>
-                    <button class="survey-button">Back</button>
-                    <button class="survey-button">Next</button>
+                    <button class="survey-button" id="back-button">Back</button>
+                    <button class="survey-button" id="next-button">Next</button>
                 </div>
 
                 <button class="survey-button" id="skip-button">Skip</button>
             </section>
         </main>
-        
+
         <script type="module" src="dist/bundle.js"></script>
     </body>
 </html>
