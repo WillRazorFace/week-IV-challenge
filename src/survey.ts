@@ -1,9 +1,18 @@
 class surveyForm {
     constructor(
         private formElement: HTMLFormElement,
-        private backButton: HTMLButtonElement,
-        private nextButton: HTMLButtonElement,
-        private skipButton: HTMLButtonElement,
+        private backButton: HTMLButtonElement = document.getElementById(
+            'back-button'
+        )! as HTMLButtonElement,
+        private nextButton: HTMLButtonElement = document.getElementById(
+            'next-button'
+        )! as HTMLButtonElement,
+        private skipButton: HTMLButtonElement = document.getElementById(
+            'skip-button'
+        )! as HTMLButtonElement,
+        private submitButton: HTMLButtonElement = document.getElementById(
+            'submit-placeholder'
+        )! as HTMLButtonElement,
         private surveyImageElement: HTMLImageElement = document.getElementById(
             'poll-img'
         )! as HTMLImageElement,
@@ -17,10 +26,17 @@ class surveyForm {
     ) {
         this.backButton.addEventListener('click', this.backButtonListener.bind(this));
         this.skipButton.addEventListener('click', this.skipButtonListener.bind(this));
+        this.submitButton.addEventListener('click', (event) => {
+            event.preventDefault();
+
+            const submitButton = formElement.querySelector('#submit-button')! as HTMLButtonElement;
+
+            submitButton.click();
+        })
     }
 
     private renderSection(render: 'next' | 'previous') {
-        const section = render === 'next' ? this.currentSection + 1 : this.currentSection - 1;
+        const section = render === 'previous' ? this.currentSection - 1 : this.currentSection + 1;
 
         // Altera a imagem renderizada
         this.surveyImageElement.src = this.images[section - 1];
@@ -31,6 +47,19 @@ class surveyForm {
 
         currentSection.hidden = true;
         nextSection.hidden = false;
+
+        // Altera os botões apresentados
+        const submitButton = document.getElementById('submit-placeholder')! as HTMLButtonElement;
+
+        if (section === 4) {
+            this.skipButton.hidden = true;
+            this.nextButton.hidden = true;
+            submitButton.hidden = false;
+        } else {
+            this.skipButton.hidden = false;
+            this.nextButton.hidden = false;
+            submitButton.hidden = true;
+        }
 
         this.currentSection = section;
     }
@@ -51,8 +80,4 @@ class surveyForm {
 
 const formElement = document.getElementById('survey-form')! as HTMLFormElement;
 
-const backButton = document.getElementById('back-button')! as HTMLButtonElement;
-const nextButton = document.getElementById('next-button')! as HTMLButtonElement;
-const skipButton = document.getElementById('skip-button')! as HTMLButtonElement;
-
-const form = new surveyForm(formElement, backButton, nextButton, skipButton);
+const form = new surveyForm(formElement);
