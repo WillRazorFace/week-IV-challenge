@@ -13,8 +13,11 @@ class surveyForm {
     private renderSection(render: 'next' | 'previous') {
         const section = render === 'next' ? this.currentSection + 1 : this.currentSection - 1;
 
-        this.formElement.querySelector(`#form-section-${this.currentSection}`)!.setAttribute('hidden', 'true');
-        this.formElement.querySelector(`#form-section-${section}`)!.setAttribute('hidden', 'true');
+        const currentSection = this.formElement.querySelector(`#form-section-${this.currentSection}`)! as HTMLElement;
+        const nextSection = this.formElement.querySelector(`#form-section-${section}`)! as HTMLElement;
+
+        currentSection.hidden = true;
+        nextSection.hidden = false;
 
         this.currentSection = section;
     }
