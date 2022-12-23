@@ -22,6 +22,10 @@ main {
     place-items: center;
 }
 
+form {
+    width: 100%;
+}
+
 .poll-img {
     margin-top: 5rem;
     display: grid;
@@ -204,6 +208,10 @@ input[type=text], input[type=email] {
     }
 
     textarea {
+        font-size: 1rem;
+    }
+
+    input[type=text], input[type=email], input[type=number] {
         font-size: 1rem;
     }
 }

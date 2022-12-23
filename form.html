@@ -26,28 +26,29 @@
                     <section class="form-section" id="form-section-1">
                         <p>What is the status of your account?</p>
 
-                        <select>
-                            <option value="valor1">I have not created an account yet.</option>
-                            <option value="valor2">I already have an account and use it frequently</option>
-                            <option value="valor3">I already have an account and I don't use it anymore</option>
+                        <select required>
+                            <option disabled selected></option>
+                            <option value="1">I have not created an account yet.</option>
+                            <option value="2">I already have an account and use it frequently</option>
+                            <option value="3">I already have an account and I don't use it anymore</option>
                         </select>
 
                         <p>In which financial markets do you operate?</p>
 
-                        <input type="radio" name="market" value="Stock Market">
-                        <label for="Stock Market">Stock Market</label><br/>
+                        <input type="radio" name="market" id="market" value="Stock Market" required>
+                        <label for="market">Stock Market</label><br/>
 
-                        <input type="radio" name="market" value="Foreign Exchange">
-                        <label for="Foreign Exchange">Foreign Exchange</label><br/>
+                        <input type="radio" name="market" id="exchange" value="Foreign Exchange">
+                        <label for="exchange">Foreign Exchange</label><br/>
 
-                        <input type="radio" name="market" value="Commodity">
-                        <label for="Commodity">Commodity</label><br/>
+                        <input type="radio" name="market" id="commodity" value="Commodity">
+                        <label for="commodity">Commodity</label><br/>
 
-                        <input type="radio" name="market" value="Bond Market">
-                        <label for="Bond Market">Bond Market</label><br/>
+                        <input type="radio" name="market" id="bond" value="Bond Market">
+                        <label for="bond">Bond Market</label><br/>
 
-                        <input type="radio" name="market" value="Cryptocurrency Market">
-                        <label for="Cryptocurrency Market">Cryptocurrency Market</label><br/>
+                        <input type="radio" name="market" id="crypto" value="Cryptocurrency Market">
+                        <label for="crypto">Cryptocurrency Market</label><br/>
                     </section>
 
                     <!-- Segunda parte do formulário -->
@@ -55,24 +56,25 @@
                         <p>How do you decide to invest?</p>
 
                         <select>
-                            <option value="valor1">I have not invested yet.</option>
-                            <option value="valor2">I invest often</option>
-                            <option value="valor3">I already invested and went bankrupt</option>
+                            <option disabled selected></option>
+                            <option value="1">I have not invested yet.</option>
+                            <option value="2">I invest often</option>
+                            <option value="2">I already invested and went bankrupt</option>
                         </select>
 
                         <p>What resources have you used or are you using for your training?</p>
 
-                        <input type="checkbox" name="books and articles" value="Books and articles">
-                        <label for="Books and articles">Books and Articles</label><br/>
+                        <input type="checkbox" id="books" value="Books and articles" required>
+                        <label for="books">Books and Articles</label><br/>
 
-                        <input type="checkbox" name="youtube tutorial videos" value="YouTube Tutorial Videos">
-                        <label for="YouTube Tutorial Videos">YouTube Tutorial Videos</label><br/>
+                        <input type="checkbox" id="youtube" value="YouTube Tutorial Videos">
+                        <label for="youtube">YouTube Tutorial Videos</label><br/>
 
-                        <input type="checkbox" name="online or face to face courses" value="Online or Face to Face Courses">
-                        <label for="Online or Face to Face Courses">Online or Face to Face Courses</label><br/>
+                        <input type="checkbox" id="online" value="Online or Face to Face Courses">
+                        <label for="online">Online or Face to Face Courses</label><br/>
 
-                        <input type="checkbox" name="experience with little investment" value="Experience With Little Investment">
-                        <label for="Experience With Little Investment">Experience With Little Investment</label><br/>
+                        <input type="checkbox" id="experience" value="Experience With Little Investment">
+                        <label for="experience">Experience With Little Investment</label><br/>
                     </section>
 
                     <section class="form-section" id="form-section-3" hidden>
