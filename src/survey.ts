@@ -1,20 +1,3 @@
-function Autobind(target: any, methodName: string, descriptor: PropertyDescriptor) {
-    const originalMethod = descriptor.value;
-
-    const adjDescriptor = {
-        configurable: true,
-        enumerable: false,
-
-        get() {
-            const boundFn = originalMethod.bind(this);
-            
-            return boundFn
-        }
-    }
-
-    return adjDescriptor;
-}
-
 class surveyForm {
     constructor(
         private formElement: HTMLFormElement,
@@ -24,6 +7,16 @@ class surveyForm {
         private currentSection = 1
     ) {
         this.backButton.addEventListener('click', this.backButtonListener.bind(this));
+        this.skipButton.addEventListener('click', this.skipButtonListener.bind(this));
+    }
+
+    private renderSection(render: 'next' | 'previous') {
+        const section = render === 'next' ? this.currentSection + 1 : this.currentSection - 1;
+
+        this.formElement.querySelector(`#form-section-${this.currentSection}`)!.setAttribute('hidden', 'true');
+        this.formElement.querySelector(`#form-section-${section}`)!.setAttribute('hidden', 'true');
+
+        this.currentSection = section;
     }
 
     private backButtonListener(event: Event) {
@@ -33,14 +26,10 @@ class surveyForm {
         else this.renderSection('previous');
     }
 
-    @Autobind
-    private renderSection(render: 'next' | 'previous') {
-        const section = render === 'next' ? this.currentSection + 1 : this.currentSection - 1;
+    private skipButtonListener(event: Event) {
+        event.preventDefault();
 
-        this.formElement.querySelector(`#form-section-${this.currentSection}`)!.setAttribute('hidden', 'true');
-        this.formElement.querySelector(`#form-section-${section}`)!.setAttribute('hidden', 'true');
-
-        this.currentSection = section;
+        this.renderSection('next');
     }
 }
 
