@@ -5,7 +5,15 @@ class surveyForm {
         private nextButton: HTMLButtonElement,
         private skipButton: HTMLButtonElement,
         private currentSection = 1
-    ) {}
+    ) {
+        this.backButton.addEventListener('click', this.backButtonListener);
+    }
+
+    private backButtonListener(event: Event) {
+        event.preventDefault();
+
+        if(this.currentSection === 1) window.location.href = '/survey.html';
+    }
 }
 
 const formElement = document.getElementById('survey-form')! as HTMLFormElement;
