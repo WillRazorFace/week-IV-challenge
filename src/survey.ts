@@ -6,13 +6,23 @@ class surveyForm {
         private skipButton: HTMLButtonElement,
         private currentSection = 1
     ) {
-        this.backButton.addEventListener('click', this.backButtonListener);
+        this.backButton.addEventListener('click', this.backButtonListener.bind(this));
     }
 
     private backButtonListener(event: Event) {
         event.preventDefault();
 
         if(this.currentSection === 1) window.location.href = '/survey.html';
+        else this.renderSection('previous');
+    }
+
+    private renderSection(render: 'next' | 'previous') {
+        const section = render === 'next' ? this.currentSection + 1 : this.currentSection - 1;
+
+        this.formElement.querySelector(`#form-section-${this.currentSection}`)!.setAttribute('hidden', 'true');
+        this.formElement.querySelector(`#form-section-${section}`)!.setAttribute('hidden', 'true');
+
+        this.currentSection = section;
     }
 }
 
