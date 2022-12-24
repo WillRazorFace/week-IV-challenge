@@ -42,7 +42,7 @@ class surveyForm {
             );
 
             if (accountStatus == '') {
-                alert ('Por favor preencha o status de sua conta');
+                alert('Por favor preencha o status de sua conta');
                 return;
             } else if (!operatingMarket) {
                 alert('Por favor preencha o seu mercado de operação');
@@ -78,15 +78,33 @@ class surveyForm {
             })
 
             if (investmentFrequency == '') {
-                alert ('Por favor selecione uma frequência de investimento');
-                return;
+                
             } else if (trainingResources.length == 0) {
-                alert ('Por favor selecione ao menos um tipo de training resource.');
+                alert('Por favor selecione ao menos um tipo de training resource.');
                 return;
             }
 
             localStorage.setItem('investmentFrequency', investmentFrequency);
             localStorage.setItem('trainingResources', trainingResources.join());
+
+            this.renderSection('next');
+        });
+
+        this.sectionElement.querySelector('#section-submit-3')!.addEventListener('click', (event) => {
+            event.preventDefault();
+            
+            const currentFormElement = this.sectionElement.querySelector(
+                '#form-section-3'
+            )! as HTMLFormElement;
+
+            const details = currentFormElement.querySelectorAll('textarea')[0].value;
+
+            if (details == '') {
+                alert('Por favor relate algo');
+                return;
+            }
+
+            localStorage.setItem('details', details);
 
             this.renderSection('next');
         });
