@@ -108,6 +108,39 @@ class surveyForm {
 
             this.renderSection('next');
         });
+
+        this.sectionElement.querySelector('#section-submit-4')!.addEventListener('click', (event) => {
+            event.preventDefault();
+            
+            const currentFormElement = this.sectionElement.querySelector(
+                '#form-section-4'
+            )! as HTMLFormElement;
+
+            const fullName = currentFormElement.querySelector<HTMLInputElement>('#full-name')!.value;
+            const email = currentFormElement.querySelector<HTMLInputElement>('#email')!.value;
+            const age = currentFormElement.querySelector<HTMLInputElement>('#age')!.value;
+
+            const fullNameRegExp = /^[a-zA-Z ]+$/;
+            const emailRegExp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            
+            const isNameValid = fullNameRegExp.test(fullName);
+            const isEmailValid = emailRegExp.test(email);
+
+            if (!isNameValid) {
+                alert('Por favor digite o seu nome completo');
+                return;
+            } else if (!isEmailValid) {
+                alert('O e-mail inserido é inválido');
+                return;
+            } else if (age == '' || age == '0') {
+                alert('Por favor, digite sua idade corretamente');
+                return;
+            }
+
+            localStorage.setItem('fullName', fullName);
+            localStorage.setItem('email', email);
+            localStorage.setItem('age', age);
+        });
     }
 
     private renderSection(render: 'next' | 'previous') {
