@@ -132,6 +132,7 @@ textarea {
     padding: .75rem;
     width: 100%;
     font-family: sans-serif;
+    border-radius: .5rem;
 }
 
 input[type=text], input[type=email], input[type=number] {
