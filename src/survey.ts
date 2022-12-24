@@ -28,7 +28,7 @@ class surveyForm {
         this.submitPlaceholder.addEventListener('click', this.submitPlaceholderListener.bind(this));
 
         // Listeners para cada botão submit de cada <form>
-        this.sectionElement.querySelector('#section-submit-1')?.addEventListener('click', (event) => {
+        this.sectionElement.querySelector('#section-submit-1')!.addEventListener('click', (event) => {
             event.preventDefault();
             
             const currentFormElement = this.sectionElement.querySelector(
@@ -41,14 +41,52 @@ class surveyForm {
                 'input[name="market"]:checked'
             );
 
-            if (!operatingMarket || accountStatus == '') {
-                alert('Preencha.');
-
+            if (accountStatus == '') {
+                alert ('Por favor preencha o status de sua conta');
+                return;
+            } else if (!operatingMarket) {
+                alert('Por favor preencha o seu mercado de operação');
                 return;
             }
 
             localStorage.setItem('accountStatus', accountStatus);
             localStorage.setItem('operatingMarket', operatingMarket.value);
+
+            this.renderSection('next');
+        });
+
+        this.sectionElement.querySelector('#section-submit-2')!.addEventListener('click', (event) => {
+            event.preventDefault();
+            
+            const currentFormElement = this.sectionElement.querySelector(
+                '#form-section-2'
+            )! as HTMLFormElement;
+
+            const investmentFrequency = currentFormElement.querySelectorAll('select')[0].value;
+
+            const trainingCheckboxes: HTMLInputElement[] = [
+                currentFormElement.querySelector('#books')! as HTMLInputElement,
+                currentFormElement.querySelector('#youtube')! as HTMLInputElement,
+                currentFormElement.querySelector('#online')! as HTMLInputElement,
+                currentFormElement.querySelector('#experience')! as HTMLInputElement,
+            ];
+
+            const trainingResources: string[] = [];
+
+            trainingCheckboxes.forEach((checkbox) => {
+                if (checkbox.checked) trainingResources.push(checkbox.value);
+            })
+
+            if (investmentFrequency == '') {
+                alert ('Por favor selecione uma frequência de investimento');
+                return;
+            } else if (trainingResources.length == 0) {
+                alert ('Por favor selecione ao menos um tipo de training resource.');
+                return;
+            }
+
+            localStorage.setItem('investmentFrequency', investmentFrequency);
+            localStorage.setItem('trainingResources', trainingResources.join());
 
             this.renderSection('next');
         });
