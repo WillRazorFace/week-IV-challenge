@@ -21,9 +21,9 @@
             </section>
 
             <section class="poll-info">
-                <form id="survey-form">
+                <section id="survey-form">
                     <!-- Primeira parte do formulário -->
-                    <section class="form-section" id="form-section-1">
+                    <form class="form-section" id="form-section-1">
                         <p>What is the status of your account?</p>
 
                         <select required>
@@ -49,13 +49,15 @@
 
                         <input type="radio" name="market" id="crypto" value="Cryptocurrency Market">
                         <label for="crypto">Cryptocurrency Market</label><br/>
-                    </section>
+
+                        <button type="submit" id="section-submit-1" hidden></button>
+                    </form>
 
                     <!-- Segunda parte do formulário -->
-                    <section class="form-section" id="form-section-2" hidden>
+                    <form class="form-section" id="form-section-2" hidden>
                         <p>How do you decide to invest?</p>
 
-                        <select>
+                        <select></select>
                             <option disabled selected></option>
                             <option value="1">I have not invested yet.</option>
                             <option value="2">I invest often</option>
@@ -64,7 +66,7 @@
 
                         <p>What resources have you used or are you using for your training?</p>
 
-                        <input type="checkbox" id="books" value="Books and articles" required>
+                        <input type="checkbox" id="books" value="Books and articles">
                         <label for="books">Books and Articles</label><br/>
 
                         <input type="checkbox" id="youtube" value="YouTube Tutorial Videos">
@@ -75,15 +77,21 @@
 
                         <input type="checkbox" id="experience" value="Experience With Little Investment">
                         <label for="experience">Experience With Little Investment</label><br/>
-                    </section>
 
-                    <section class="form-section" id="form-section-3" hidden>
+                        <button type="submit" id="section-submit-2" hidden></button>
+                    </form>
+
+                    <!-- Terceira parte do formulário -->
+                    <form class="form-section" id="form-section-3" hidden>
                         <p>If you or someone close to you has already made a loss on the investment, write down the details</p>
 
                         <textarea id="details" name="details" rows="7" cols="40" maxlength="130"></textarea>
-                    </section>
 
-                    <section class="form-section" id="form-section-4" hidden>
+                        <button type="submit" id="section-submit-3" hidden></button>
+                    </form>
+
+                    <!-- Quarta parte do formulário -->
+                    <form class="form-section" id="form-section-4" hidden>
                         <p>Full Name</p>
                         <input type="text" name="full_name" id="full_name" required>
 
@@ -92,9 +100,10 @@
 
                         <p>Age</p>
                         <input type="number" name="age" id="age" required>
-                        <button type="submit" id="submit-button" hidden></button>
-                    </section>
-                </form>
+
+                        <button type="submit" id="section-submit-4" hidden></button>
+                    </form>
+                </section>
 
                 <div id="button-group-1">
                     <button class="survey-button" id="back-button">Back</button>
