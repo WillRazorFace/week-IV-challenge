@@ -78,7 +78,8 @@ class surveyForm {
             })
 
             if (investmentFrequency == '') {
-                
+                alert('Por favor selecione uma frequência de investimento.');
+                return;
             } else if (trainingResources.length == 0) {
                 alert('Por favor selecione ao menos um tipo de training resource.');
                 return;
@@ -140,6 +141,8 @@ class surveyForm {
             localStorage.setItem('fullName', fullName);
             localStorage.setItem('email', email);
             localStorage.setItem('age', age);
+
+            window.location.href = '/final.html';
         });
     }
 
