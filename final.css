@@ -31,7 +31,7 @@ main {
 .poll-info {
     display: grid;
     grid-area: info;
-    padding: 0;
+    padding: 1.5rem;
     gap: 0;
 }
 
@@ -54,6 +54,22 @@ main {
     font-size: 1.5rem;
 }
 
+.info-partial {
+    display: grid;
+    grid-template-areas:
+        "info" "content"
+    ;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    justify-content: center;
+}
+
+.info-partial p {
+    text-align: left;
+    font-size: 1.25rem;
+    align-self: center;
+}
+
 /* Responsividade */
 
 @media only screen and (max-width: 900px) {
@@ -72,11 +88,11 @@ main {
         align-items: center;
         justify-content: center;
         align-content: center;
-        margin: 1.5rem 0 0 0;
     }
     
     .poll-img img {
         width: 80%;
+        margin: 0;
     }
 
     .poll-info {
@@ -88,6 +104,28 @@ main {
     }
 
     .poll-info h1 {
-        font-size: 5rem;
+        font-size: 2rem;
+    }
+
+    #collected-info {
+        margin-top: 2rem;
+    }
+
+    .info-partial {
+        place-items: center;
+    }
+
+    .info-partial p {
+        text-align: center;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .poll-info h1 {
+        font-size: 1.5rem;
+    }
+
+    .info-partial h2 {
+        font-size: 1.2rem;
     }
 }
