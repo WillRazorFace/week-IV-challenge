@@ -193,10 +193,6 @@ input[type=text], input[type=email] {
         font-size: 1.25rem;
     }
 
-    textarea {
-        font-size: 1rem;
-    }
-
     input[type=text], input[type=email], input[type=number] {
         font-size: 1rem;
     }
@@ -216,6 +212,10 @@ input[type=text], input[type=email] {
     }
 
     select {
+        font-size: 1rem;
+    }
+
+    textarea {
         font-size: 1rem;
     }
 }
