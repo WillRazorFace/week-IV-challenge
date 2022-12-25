@@ -73,6 +73,10 @@ form {
     margin-top: 3rem;
 }
 
+#survey-form {
+    width: 100%;
+}
+
 .survey-button {
     border-radius: 1.25rem;
     border: none;
@@ -164,11 +168,12 @@ input[type=text], input[type=email] {
         align-items: center;
         justify-content: center;
         align-content: center;
-        margin: 1.5rem 0 0 0;
+        margin: 0;
     }
     
     .poll-img img {
         width: 100%;
+        margin: 0;
     }
 
     .poll-info {
@@ -177,35 +182,15 @@ input[type=text], input[type=email] {
         text-align: center;
         place-items: center;
         padding: 0;
-    }
-    
-    .poll-info p {
-        font-size: 1.25rem;
+        margin: 0;
     }
 
     .poll-info div {
         width: 100%;
     }
 
-    .form-section label {
-        font-size: 1.25rem;
-    }
-
-    .survey-button {
-        width: 100%;
-    }
-    
-    .survey-button a {
-        text-decoration: none;
-        color: white;
-        font-size: 1.25rem;
-    }
-
     select {
-        width: 100%;
-        font-size: 1rem;
-        border-radius: 0.5rem;
-        background-color: transparent;
+        font-size: 1.25rem;
     }
 
     textarea {
@@ -213,6 +198,24 @@ input[type=text], input[type=email] {
     }
 
     input[type=text], input[type=email], input[type=number] {
+        font-size: 1rem;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .poll-info p {
+        font-size: 1.25rem;
+    }
+
+    .survey-button {
+        font-size: 1.1rem;
+    }
+
+    .form-section label {
+        font-size: 1.25rem;
+    }
+
+    select {
         font-size: 1rem;
     }
 }
