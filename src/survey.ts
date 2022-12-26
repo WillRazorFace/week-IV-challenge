@@ -27,6 +27,14 @@ class surveyForm {
 
         this.submitPlaceholder.addEventListener('click', this.submitPlaceholderListener.bind(this));
 
+        // Listener para contador de caracteres no textarea
+        const formTextarea = this.sectionElement.querySelectorAll('textarea')[0]! as HTMLTextAreaElement;
+        const charCounter = formTextarea.nextElementSibling! as HTMLSpanElement;
+
+        formTextarea.addEventListener('input', (event) => {
+            charCounter.innerText = `${formTextarea.value.length}/130`;
+        })
+
         // Listeners para cada botão submit de cada <form>
         this.sectionElement.querySelector('#section-submit-1')!.addEventListener('click', (event) => {
             event.preventDefault();
