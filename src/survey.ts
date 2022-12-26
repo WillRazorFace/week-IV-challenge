@@ -31,7 +31,7 @@ class surveyForm {
         const formTextarea = this.sectionElement.querySelectorAll('textarea')[0]! as HTMLTextAreaElement;
         const charCounter = formTextarea.nextElementSibling! as HTMLSpanElement;
 
-        formTextarea.addEventListener('input', (event) => {
+        formTextarea.addEventListener('input', (_event) => {
             charCounter.innerText = `${formTextarea.value.length}/130`;
         })
 
@@ -128,9 +128,9 @@ class surveyForm {
             const detailsValue = detailsElement.value;
 
             if (detailsValue == '') {
-                const errorSpan = detailsElement.nextElementSibling! as HTMLSpanElement;
+                const errorSpan = document.getElementById('details-error')! as HTMLSpanElement;
 
-                this.displayError(errorSpan, 'Please write something.');
+                this.displayError(errorSpan, '\nPlease write something.');
 
                 return;
             }
