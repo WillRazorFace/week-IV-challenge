@@ -163,10 +163,34 @@ class surveyForm {
         const submitButton = document.getElementById('submit-placeholder')! as HTMLButtonElement;
 
         if (section === 4) {
+            const buttonGroup = document.getElementById('button-group-1')! as HTMLDivElement;
+
+            buttonGroup.style.gridTemplateColumns = 'auto';
+            buttonGroup.style.gridTemplateRows = '1fr 1fr';
+            buttonGroup.style.gap = '20%';
+
+            this.skipButton!.style.padding = '0.5rem';
+            this.skipButton!.style.fontSize = '1.3rem';
+
+            this.nextButton!.style.padding = '0.5rem';
+            this.nextButton!.style.fontSize = '1.3rem';
+
             this.skipButton!.hidden = true;
             this.nextButton!.hidden = true;
             submitButton.hidden = false;
         } else {
+            const buttonGroup = document.getElementById('button-group-1')! as HTMLDivElement;
+
+            buttonGroup.style.gridTemplateColumns = '1fr 1fr';
+            buttonGroup.style.gridTemplateRows = 'auto';
+            buttonGroup.style.gap = '2%';
+
+            this.skipButton!.style.padding = '0.25rem';
+            this.skipButton!.style.fontSize = '1.25rem';
+
+            this.nextButton!.style.padding = '0.25rem';
+            this.nextButton!.style.fontSize = '1.25rem';
+
             this.skipButton!.hidden = false;
             this.nextButton!.hidden = false;
             submitButton.hidden = true;
