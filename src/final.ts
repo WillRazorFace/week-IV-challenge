@@ -125,10 +125,4 @@ if (storageKnowedLoss) {
     knowedLossParagraph.innerText = storageKnowedLoss;
 }
 
-// const trainingResourcesText = allTrainingResources.join(', ');
-
-// accountStatusElement.innerHTML = `${accountStatusOptions[storageAccountStatus]}`;
-// operatingMarketElement.innerHTML = `${operatingMarketOptions[storageOperatingMarket]}`;
-// investmentFrequencyElement.innerHTML = `${investmentFrequencyOptions[storageInvestmentFrequency]}`;
-// trainingResourcesElement.innerHTML = `${trainingResourcesText}`;
-// knowedLossElement.innerHTML = `${localStorage.getItem('details')}`;
+localStorage.clear();
