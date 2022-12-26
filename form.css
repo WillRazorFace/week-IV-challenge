@@ -91,6 +91,11 @@ form {
     cursor: pointer;
 }
 
+.survey-button:hover {
+    color: black;
+    background-color: #FFFF7D;
+}
+
 #skip-button {
     width: 100%;
     margin-top: 0.5rem;
