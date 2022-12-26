@@ -35,21 +35,30 @@ class surveyForm {
                 '#form-section-1'
             )! as HTMLFormElement;
 
-            const accountStatus = currentFormElement.querySelectorAll('select')[0].value;
+            const accountStatusElement = currentFormElement.querySelectorAll('select')[0]! as HTMLSelectElement;
+            const accountStatusValue = accountStatusElement.value;
 
             const operatingMarket = currentFormElement.querySelector<HTMLInputElement>(
                 'input[name="market"]:checked'
             );
 
-            if (accountStatus == '') {
-                alert('Por favor preencha o status de sua conta');
+            if (accountStatusValue == '') {
+                const errorSpan = accountStatusElement.nextElementSibling! as HTMLSpanElement;
+
+                this.displayError(errorSpan, 'Please select an option.');
+
                 return;
             } else if (!operatingMarket) {
-                alert('Por favor preencha o seu mercado de operação');
+                const errorSpan = document.getElementById(
+                    'operating-market-error'
+                )! as HTMLSpanElement;
+
+                this.displayError(errorSpan, 'Please select an option.');
+
                 return;
             }
 
-            localStorage.setItem('accountStatus', accountStatus);
+            localStorage.setItem('accountStatus', accountStatusValue);
             localStorage.setItem('operatingMarket', operatingMarket.value);
 
             this.renderSection('next');
@@ -62,7 +71,8 @@ class surveyForm {
                 '#form-section-2'
             )! as HTMLFormElement;
 
-            const investmentFrequency = currentFormElement.querySelectorAll('select')[0].value;
+            const investmentFrequencyElement = currentFormElement.querySelectorAll('select')[0];
+            const investmentFrequencyValue = investmentFrequencyElement.value;
 
             const trainingCheckboxes: HTMLInputElement[] = [
                 currentFormElement.querySelector('#books')! as HTMLInputElement,
@@ -77,15 +87,23 @@ class surveyForm {
                 if (checkbox.checked) trainingResources.push(checkbox.value);
             })
 
-            if (investmentFrequency == '') {
-                alert('Por favor selecione uma frequência de investimento.');
+            if (investmentFrequencyValue == '') {
+                const errorSpan = investmentFrequencyElement.nextElementSibling! as HTMLSpanElement;
+
+                this.displayError(errorSpan, 'Please select an option.');
+
                 return;
             } else if (trainingResources.length == 0) {
-                alert('Por favor selecione ao menos um tipo de training resource.');
+                const errorSpan = document.getElementById(
+                    'training-resources-error'
+                )! as HTMLSpanElement;
+
+                this.displayError(errorSpan, 'Please select an option.');
+
                 return;
             }
 
-            localStorage.setItem('investmentFrequency', investmentFrequency);
+            localStorage.setItem('investmentFrequency', investmentFrequencyValue);
             localStorage.setItem('trainingResources', trainingResources.join());
 
             this.renderSection('next');
@@ -98,14 +116,18 @@ class surveyForm {
                 '#form-section-3'
             )! as HTMLFormElement;
 
-            const details = currentFormElement.querySelectorAll('textarea')[0].value;
+            const detailsElement = currentFormElement.querySelectorAll('textarea')[0];
+            const detailsValue = detailsElement.value;
 
-            if (details == '') {
-                alert('Por favor relate algo');
+            if (detailsValue == '') {
+                const errorSpan = detailsElement.nextElementSibling! as HTMLSpanElement;
+
+                this.displayError(errorSpan, 'Please write something.');
+
                 return;
             }
 
-            localStorage.setItem('details', details);
+            localStorage.setItem('details', detailsValue);
 
             this.renderSection('next');
         });
@@ -117,30 +139,44 @@ class surveyForm {
                 '#form-section-4'
             )! as HTMLFormElement;
 
-            const fullName = currentFormElement.querySelector<HTMLInputElement>('#full-name')!.value;
-            const email = currentFormElement.querySelector<HTMLInputElement>('#email')!.value;
-            const age = currentFormElement.querySelector<HTMLInputElement>('#age')!.value;
+            const fullNameElement = currentFormElement.querySelector<HTMLInputElement>('#full-name')!;
+            const fullNameValue = fullNameElement.value;
+
+            const emailElement = currentFormElement.querySelector<HTMLInputElement>('#email')!;
+            const emailValue = emailElement.value;
+
+            const ageElement = currentFormElement.querySelector<HTMLInputElement>('#age')!;
+            const ageValue = ageElement.value;
 
             const fullNameRegExp = /^[a-zA-Z ]+$/;
             const emailRegExp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
             
-            const isNameValid = fullNameRegExp.test(fullName);
-            const isEmailValid = emailRegExp.test(email);
+            const isNameValid = fullNameRegExp.test(fullNameValue);
+            const isEmailValid = emailRegExp.test(emailValue);
 
             if (!isNameValid) {
-                alert('Por favor digite o seu nome completo');
+                const errorSpan = fullNameElement.nextElementSibling! as HTMLSpanElement;
+
+                this.displayError(errorSpan, 'Please enter your full name.');
+
                 return;
             } else if (!isEmailValid) {
-                alert('O e-mail inserido é inválido');
+                const errorSpan = emailElement.nextElementSibling! as HTMLSpanElement;
+
+                this.displayError(errorSpan, 'Please enter your e-mail correctly.');
+
                 return;
-            } else if (age == '' || age == '0') {
-                alert('Por favor, digite sua idade corretamente');
+            } else if (ageValue == '' || ageValue == '0') {
+                const errorSpan = ageElement.nextElementSibling! as HTMLSpanElement;
+
+                this.displayError(errorSpan, '\nPlease enter your age correctly.');
+
                 return;
             }
 
-            localStorage.setItem('fullName', fullName);
-            localStorage.setItem('email', email);
-            localStorage.setItem('age', age);
+            localStorage.setItem('fullName', fullNameValue);
+            localStorage.setItem('email', emailValue);
+            localStorage.setItem('age', ageValue);
 
             window.location.href = '/final.html';
         });
@@ -197,6 +233,16 @@ class surveyForm {
         }
 
         this.currentSection = section;
+    }
+
+    private displayError(errorSpan: HTMLSpanElement, errorMessage: string) {
+        errorSpan.hidden = false;
+        errorSpan.innerText = errorMessage;
+
+        setTimeout(() => {
+            errorSpan.hidden = true;
+            errorSpan.innerText = '';
+        }, 5000)
     }
 
     private backButtonListener(event: Event) {
