@@ -99,3 +99,13 @@ main {
         font-size: 5rem;
     }
 }
+
+@media only screen and (max-width: 600px) {
+    .poll-info h1 {
+        font-size: 3.5rem;
+    }
+
+    .poll-info h2 {
+        font-size: 1.5rem;
+    }
+}
