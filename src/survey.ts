@@ -53,7 +53,7 @@ class surveyForm {
             if (accountStatusValue == '') {
                 const errorSpan = accountStatusElement.nextElementSibling! as HTMLSpanElement;
 
-                this.displayError(errorSpan, 'Please select an option.');
+                this.displayError(errorSpan, 'Please select an option.', accountStatusElement);
 
                 return;
             } else if (!operatingMarket) {
@@ -98,7 +98,7 @@ class surveyForm {
             if (investmentFrequencyValue == '') {
                 const errorSpan = investmentFrequencyElement.nextElementSibling! as HTMLSpanElement;
 
-                this.displayError(errorSpan, 'Please select an option.');
+                this.displayError(errorSpan, 'Please select an option.', investmentFrequencyElement);
 
                 return;
             } else if (trainingResources.length == 0) {
@@ -130,7 +130,7 @@ class surveyForm {
             if (detailsValue == '') {
                 const errorSpan = document.getElementById('details-error')! as HTMLSpanElement;
 
-                this.displayError(errorSpan, '\nPlease write something.');
+                this.displayError(errorSpan, '\nPlease write something.', detailsElement);
 
                 return;
             }
@@ -165,19 +165,19 @@ class surveyForm {
             if (!isNameValid) {
                 const errorSpan = fullNameElement.nextElementSibling! as HTMLSpanElement;
 
-                this.displayError(errorSpan, 'Please enter your full name.');
+                this.displayError(errorSpan, 'Please enter your full name.', fullNameElement);
 
                 return;
             } else if (!isEmailValid) {
                 const errorSpan = emailElement.nextElementSibling! as HTMLSpanElement;
 
-                this.displayError(errorSpan, 'Please enter your e-mail correctly.');
+                this.displayError(errorSpan, 'Please enter your e-mail correctly.', emailElement);
 
                 return;
             } else if (ageValue == '' || ageValue == '0') {
                 const errorSpan = ageElement.nextElementSibling! as HTMLSpanElement;
 
-                this.displayError(errorSpan, '\nPlease enter your age correctly.');
+                this.displayError(errorSpan, '\nPlease enter your age correctly.', ageElement);
 
                 return;
             }
@@ -243,13 +243,23 @@ class surveyForm {
         this.currentSection = section;
     }
 
-    private displayError(errorSpan: HTMLSpanElement, errorMessage: string) {
+    private displayError(errorSpan: HTMLSpanElement, errorMessage: string, inputElement?: HTMLElement) {
         errorSpan.hidden = false;
         errorSpan.innerText = errorMessage;
+
+        console.log(inputElement);
+
+        if (inputElement) {
+            inputElement.style.borderColor = 'rgba(255, 0, 0, 0.7)';
+        }
 
         setTimeout(() => {
             errorSpan.hidden = true;
             errorSpan.innerText = '';
+
+            if (inputElement) {
+                inputElement.style.borderColor = '';
+            }
         }, 5000)
     }
 
