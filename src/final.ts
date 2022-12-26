@@ -1,3 +1,7 @@
+if (localStorage.length === 0) {
+    window.location.href = '/';
+}
+
 const accountStatusOptions = [
     'I have not created an account yet.',
     'I already have an account and use it frequently',
