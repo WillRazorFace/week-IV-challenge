@@ -64,12 +64,14 @@ main {
     background-color: #3EB25E;
     width: 70%;
     padding: 0.25rem;
-}
-
-.survey-button a {
-    text-decoration: none;
     color: white;
     font-size: 1.25rem;
+    cursor: pointer;
+}
+
+.survey-button:hover {
+    color: black;
+    background-color: #FFFF7D;
 }
 
 /* Responsividade */
