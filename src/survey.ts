@@ -229,11 +229,11 @@ class surveyForm {
             buttonGroup.style.gridTemplateRows = 'auto';
             buttonGroup.style.gap = '2%';
 
-            this.skipButton!.style.padding = '0.4rem';
-            this.skipButton!.style.fontSize = '1.25rem';
+            this.skipButton!.style.padding = '';
+            this.skipButton!.style.fontSize = '';
 
-            this.nextButton!.style.padding = '0.25rem';
-            this.nextButton!.style.fontSize = '1.25rem';
+            this.nextButton!.style.padding = '';
+            this.nextButton!.style.fontSize = '';
 
             this.skipButton!.hidden = false;
             this.nextButton!.hidden = false;
@@ -246,8 +246,6 @@ class surveyForm {
     private displayError(errorSpan: HTMLSpanElement, errorMessage: string, inputElement?: HTMLElement) {
         errorSpan.hidden = false;
         errorSpan.innerText = errorMessage;
-
-        console.log(inputElement);
 
         if (inputElement) {
             inputElement.style.borderColor = 'rgba(255, 0, 0, 0.7)';
