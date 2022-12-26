@@ -56,13 +56,17 @@ main {
     border: none;
     background-color: #3EB25E;
     padding: 0.5rem;
-}
-
-.poll-info button a {
-    text-decoration: none;
     color: white;
     font-size: 1.5rem;
+    cursor: pointer;
 }
+
+.poll-info button:hover {
+    color: black;
+    background-color: #FFFF7D;
+}
+
+.poll-info button:hover .poll-info button a 
 
 /* Responsividade */
 
