@@ -91,6 +91,7 @@ main {
         align-items: center;
         justify-content: center;
         align-content: center;
+        margin-top: 0;
     }
     
     .poll-img img {
