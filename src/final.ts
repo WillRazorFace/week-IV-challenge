@@ -29,7 +29,7 @@ const finalHeader = document.getElementById('final-header')! as HTMLHeadElement;
 
 const accountStatusElement = document.getElementById(
     'account-status'
-)! as HTMLParagraphElement;
+)! as HTMLDivElement;
 const operatingMarketElement = document.getElementById(
     'financial-market'
 )! as HTMLParagraphElement;
@@ -43,23 +43,92 @@ const knowedLossElement = document.getElementById(
     'knowed-loss'
 )! as HTMLParagraphElement;
 
-finalHeader.innerHTML = `${localStorage.getItem('fullName')}, thanks for participating in the poll!`;
+finalHeader.innerHTML = `${localStorage.getItem('fullName')}, thanks for participating in the poll! Your answers have been sent and will be reviewed.`;
 
-const storageAccountStatus = parseInt(localStorage.getItem('accountStatus')!) - 1;
-const storageOperatingMarket = parseInt(localStorage.getItem('operatingMarket')!) -1;
-const storageInvestmentFrequency = parseInt(localStorage.getItem('investmentFrequency')!) - 1;
-const storageTrainingResources = localStorage.getItem('trainingResources')!.split(',');
+const storageAccountStatus = localStorage.getItem('accountStatus')!;
+const storageOperatingMarket = localStorage.getItem('operatingMarket');
+const storageInvestmentFrequency = localStorage.getItem('investmentFrequency');
+const storageTrainingResources = localStorage.getItem('trainingResources');
+const storageKnowedLoss = localStorage.getItem('details');
 
-const allTrainingResources: string[] = [];
+if (storageAccountStatus) {
+    const accountStatusParagraph = accountStatusElement.querySelectorAll(
+        'p'
+    )[0]! as HTMLParagraphElement;
 
-storageTrainingResources.forEach((trainingResource) => {
-    allTrainingResources.push(trainingResourcesOptions[parseInt(trainingResource) - 1]);
-});
+    accountStatusElement.querySelectorAll('h2')[0]!.hidden = false;
+    accountStatusParagraph.hidden = false;
+    accountStatusElement.hidden = false;
+    
+    accountStatusParagraph.innerText = `${accountStatusOptions[parseInt(
+        storageAccountStatus
+    ) - 1]}`;
+}
 
-const trainingResourcesText = allTrainingResources.join(', ');
+if (storageOperatingMarket) {
+    const operatingMarketParagraph = operatingMarketElement.querySelectorAll(
+        'p'
+    )[0]! as HTMLParagraphElement;
 
-accountStatusElement.innerHTML = `${accountStatusOptions[storageAccountStatus]}`;
-operatingMarketElement.innerHTML = `${operatingMarketOptions[storageOperatingMarket]}`;
-investmentFrequencyElement.innerHTML = `${investmentFrequencyOptions[storageInvestmentFrequency]}`;
-trainingResourcesElement.innerHTML = `${trainingResourcesText}`;
-knowedLossElement.innerHTML = `${localStorage.getItem('details')}`;
+    operatingMarketElement.querySelectorAll('h2')[0]!.hidden = false;
+    operatingMarketParagraph.hidden = false;
+    operatingMarketElement.hidden = false;
+
+    operatingMarketParagraph.innerText = `${operatingMarketOptions[parseInt(
+        storageOperatingMarket
+    ) - 1]}`;
+}
+
+if (storageInvestmentFrequency) {
+    const investmentFrequencyParagraph = investmentFrequencyElement.querySelectorAll(
+        'p'
+    )[0]! as HTMLParagraphElement;
+
+    investmentFrequencyElement.querySelectorAll('h2')[0]!.hidden = false;
+    investmentFrequencyParagraph.hidden = false;
+    investmentFrequencyElement.hidden = false;
+
+    investmentFrequencyParagraph.innerText = `${investmentFrequencyOptions[parseInt(
+        storageInvestmentFrequency
+    ) - 1]}`;
+}
+
+if (storageTrainingResources) {
+    const trainingResourcesItems = storageTrainingResources.split(',');
+    
+    const allTrainingResources: string[] = [];
+
+    trainingResourcesItems.forEach((trainingResource) => {
+        allTrainingResources.push(trainingResourcesOptions[parseInt(trainingResource) - 1]);
+    });
+
+    const trainingResourcesText = allTrainingResources.join(', ');
+
+    const trainingResourcesParagraph = trainingResourcesElement.querySelectorAll(
+        'p'
+    )[0]! as HTMLParagraphElement;
+
+    trainingResourcesElement.querySelectorAll('h2')[0]!.hidden = false;
+    trainingResourcesParagraph.hidden = false;
+    trainingResourcesElement.hidden = false;
+
+    trainingResourcesParagraph.innerText = `${trainingResourcesText}`;
+}
+
+if (storageKnowedLoss) {
+    const knowedLossParagraph = knowedLossElement.querySelectorAll('p')![0] as HTMLParagraphElement;
+
+    knowedLossElement.querySelectorAll('h2')[0]!.hidden = false;
+    knowedLossParagraph.hidden = false;
+    knowedLossElement.hidden = false;
+
+    knowedLossParagraph.innerText = storageKnowedLoss;
+}
+
+// const trainingResourcesText = allTrainingResources.join(', ');
+
+// accountStatusElement.innerHTML = `${accountStatusOptions[storageAccountStatus]}`;
+// operatingMarketElement.innerHTML = `${operatingMarketOptions[storageOperatingMarket]}`;
+// investmentFrequencyElement.innerHTML = `${investmentFrequencyOptions[storageInvestmentFrequency]}`;
+// trainingResourcesElement.innerHTML = `${trainingResourcesText}`;
+// knowedLossElement.innerHTML = `${localStorage.getItem('details')}`;
