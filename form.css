@@ -158,6 +158,11 @@ input[type=text], input[type=email] {
     width: 100%;
 }
 
+.counter {
+    font-style: italic;
+    opacity: 0.5;
+}
+
 /* Responsividade */
 
 @media only screen and (max-width: 900px) {
