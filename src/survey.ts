@@ -229,7 +229,7 @@ class surveyForm {
             buttonGroup.style.gridTemplateRows = 'auto';
             buttonGroup.style.gap = '2%';
 
-            this.skipButton!.style.padding = '0.25rem';
+            this.skipButton!.style.padding = '0.4rem';
             this.skipButton!.style.fontSize = '1.25rem';
 
             this.nextButton!.style.padding = '0.25rem';
